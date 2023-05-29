@@ -1,12 +1,14 @@
 import numpy as np
 from collections import Counter
 
-def euclidean_distance(x1,x2):
+
+def euclidean_distance(x1, x2):
     distance = np.sqrt(np.sum(x1-x2)**2)
     return distance
 
-class KNN:
-    def __init(self, k=3):
+
+class KNN():
+    def __init__(self, k=3):
         self.k = k
 
     def fit(self, X, y):
@@ -19,13 +21,12 @@ class KNN:
 
     def _predict(self, x):
         # compute distances
-        distances = [euclidean_distance(x,x_train) for x_train in self.X_train]
+        distances = [euclidean_distance(x, x_train) for x_train in self.X_train]
 
         # get the closest k neighbours
-        k_indices=np.argsort(distances)[:self.k]
-        k_nearest_labels=[self.y_train[i] for i in k_indices]
+        k_indices = np.argsort(distances)[:self.k]
+        k_nearest_labels = [self.y_train[i] for i in k_indices]
 
-
-        #majority vote
+        # majority vote
         most_common = Counter(k_nearest_labels).most_common()
-
+        return most_common[0][0]
