@@ -14,7 +14,7 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_s
 print(X_train.shape)
 print(y_train.shape)
 
-from linear_regression import LinearRegression
+from regression_models import LinearRegression
 
 regressor = LinearRegression(lr=0.01)
 regressor.fit(X_train, y_train)
